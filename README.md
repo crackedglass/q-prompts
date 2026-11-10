@@ -149,6 +149,7 @@ python3 -B -m unittest discover -s tests -v
 | --- | --- |
 | `agent-architecture` | Design and review agent architectures. |
 | `create-spring-boot-java-project` | Create Spring Boot Java projects. |
+| `hexagonal-architecture-review` | Review ports, adapters, and architectural boundaries. |
 | `java-add-graalvm-native-image-support` | Add GraalVM native image support. |
 | `java-debugging` | Debug Java applications. |
 | `java-development` | Develop and maintain plain Java applications. |

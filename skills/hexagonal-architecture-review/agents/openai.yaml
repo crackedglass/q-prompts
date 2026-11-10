@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hexagonal Architecture Review"
+  short_description: "Review ports, adapters, and dependency boundaries"
+  default_prompt: "Use $hexagonal-architecture-review to review this codebase for architectural boundary violations and report evidence-backed findings."
