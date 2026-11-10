@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backend Development"
+  short_description: "Build Rust backends with OpenSpec and focused reviews"
+  default_prompt: "Use $backend-development to implement this OpenAPI specification and business description with OpenSpec design and specialist reviews."

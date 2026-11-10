@@ -1,0 +1,43 @@
+flowchart TD
+    Producer[User or upstream agent<br/>OpenAPI + designs + stories + revisions]
+    Intake[Intake and reconcile<br/>Pin inputs and build coverage matrix]
+    Decision[Product / design / API owner<br/>Version-bound decision in conversation]
+    Spec[OpenSpec change<br/>Project-resolved proposal, specs, design, tasks]
+    Admission{Host adapter admission<br/>Authority + lifecycle + budgets + current artifacts}
+    Implement[One frontend coding agent<br/>TypeScript / React vertical slice]
+    Checks[Isolated checks<br/>Types, behavior, browser, production bundle]
+    Code[Code review procedure<br/>Correctness, state, contract, accessibility]
+    Perf[Performance review procedure<br/>Production assets and measured critical paths]
+    Reliability[Reliability review procedure<br/>Races, failures, mutations, asset loading]
+    Evidence[Versioned evidence bundle<br/>Inputs + specs + code + bundle + results]
+    Gate{Completion admission<br/>Current evidence and resolved blockers?}
+    Repair{Repair allowed?<br/>Budget and progress remain?}
+    Output[Reviewable change + handback<br/>Verified within declared scope]
+    Partial[Partial / waiting / failed / canceled<br/>Evidence, findings, next owner/action]
+    Checkpoint[Durable checkpoint and runtime ledger<br/>Budgets, operations, next permitted step]
+    Resume[Resume<br/>Check current rights and goal;<br/>reconcile versions and unknown effects]
+    Stop[User / administrator stop or disable<br/>Deny new calls; reconcile in-flight work]
+
+    Producer --> Intake
+    Intake -->|conflict or essential gap| Decision
+    Decision -->|record accepted revision| Intake
+    Intake --> Spec
+    Spec --> Admission
+    Admission -->|admitted| Implement
+    Admission -->|denied or unavailable guarantee| Partial
+    Implement --> Checks
+    Checks --> Code --> Perf --> Reliability --> Evidence --> Gate
+    Gate -->|yes| Output
+    Gate -->|finding or failed check| Repair
+    Repair -->|yes: invalidate affected evidence| Admission
+    Repair -->|no| Partial
+    Reliability -->|unknown mutation outcome / missing semantics| Decision
+    Decision -->|pending| Partial
+    Spec -.-> Checkpoint
+    Evidence -.-> Checkpoint
+    Partial -.-> Checkpoint
+    Checkpoint --> Resume --> Admission
+    Stop --> Partial
+
+    Note[Proposed architecture v0.1<br/>Sequential review roles; no persistent reviewer agents.<br/>Every tool call requires admission, including checks and reviews.<br/>Merge and deployment need separate authority.]
+    Note -.-> Admission

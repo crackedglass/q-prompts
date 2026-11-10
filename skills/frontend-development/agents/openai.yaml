@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Development"
+  short_description: "Build React features with OpenSpec and focused reviews"
+  default_prompt: "Use $frontend-development to implement these UI designs, user stories and OpenAPI contracts with OpenSpec and code, performance and reliability reviews."

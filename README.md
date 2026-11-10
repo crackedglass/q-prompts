@@ -148,6 +148,7 @@ python3 -B -m unittest discover -s tests -v
 | Skill | Purpose |
 | --- | --- |
 | `agent-architecture` | Design and review agent architectures. |
+| `frontend-development` | Deliver TypeScript/React features with OpenSpec and code, performance, and reliability reviews. |
 | `create-spring-boot-java-project` | Create Spring Boot Java projects. |
 | `hexagonal-architecture-review` | Review ports, adapters, and architectural boundaries. |
 | `java-add-graalvm-native-image-support` | Add GraalVM native image support. |
